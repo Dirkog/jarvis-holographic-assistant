@@ -195,7 +195,7 @@ pub fn shutdown_system() {
         let mut h_token = NULL;
         if OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &mut h_token) != 0 {
             let mut tkp = std::mem::zeroed::<winapi::um::winnt::TOKEN_PRIVILEGES>();
-            let privilege = CString::new("SeShutdownPrivilege").unwrap();
+            let privilege = CString::new("SeShutdownPrivilege").expect("Invalid privilege string");
             let mut luid = std::mem::zeroed::<winapi::um::winnt::LUID>();
 
             if LookupPrivilegeValueW(NULL, privilege.as_ptr() as *const u16, &mut luid) != 0 {
@@ -229,7 +229,7 @@ pub fn restart_system() {
         let mut h_token = NULL;
         if OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &mut h_token) != 0 {
             let mut tkp = std::mem::zeroed::<winapi::um::winnt::TOKEN_PRIVILEGES>();
-            let privilege = CString::new("SeShutdownPrivilege").unwrap();
+            let privilege = CString::new("SeShutdownPrivilege").expect("Invalid privilege string");
             let mut luid = std::mem::zeroed::<winapi::um::winnt::LUID>();
 
             if LookupPrivilegeValueW(NULL, privilege.as_ptr() as *const u16, &mut luid) != 0 {
