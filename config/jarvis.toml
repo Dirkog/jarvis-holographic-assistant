@@ -1,0 +1,42 @@
+# JARVIS Configuration
+default_language = "ru"
+supported_languages = ["ru", "en"]
+
+[audio]
+sample_rate = 16000
+channels = 1
+buffer_size = 1024
+vad_threshold = 0.02
+silence_timeout_ms = 1500
+
+[camera]
+device_index = 0
+resolution = [1280, 720]
+fps = 30
+auto_exposure = true
+
+[ui]
+window_width = 1920
+window_height = 1080
+transparency = 0.85
+theme = "jarvis_blue"
+fps_target = 60
+enable_glow = true
+hologram_intensity = 0.7
+
+[gestures]
+enabled = true
+sensitivity = 0.8
+smoothing = 0.5
+min_confidence = 0.7
+
+[models]
+vosk_russian = "models/vosk-model-ru-0.42"
+vosk_english = "models/vosk-model-en-us-0.22"
+mediapipe_hands = "models/mediapipe_hand_landmark.onnx"
+
+[voice]
+enabled = true
+speed = 1.0
+pitch = 1.0
+voice_id = "ru-RU-SvetlanaNeural"
